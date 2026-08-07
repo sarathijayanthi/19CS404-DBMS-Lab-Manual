@@ -284,7 +284,7 @@ alter table employee add designation varchar(50);
 
 <img width="706" height="279" alt="image" src="https://github.com/user-attachments/assets/b05132b8-57cf-433c-bb72-53419b8b8ac7" />
 
-##GRADE:##
+## GRADE:
 <img width="500" height="218" alt="image" src="https://github.com/user-attachments/assets/11e0e0b5-6369-43c6-932d-f89da84f0e7a" />
 
 
