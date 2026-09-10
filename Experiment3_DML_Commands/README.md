@@ -47,123 +47,246 @@ SELECT column1, column2 FROM table_name WHERE condition;
 ```
 **Question 1**
 --
--- Paste Question 1 here
+Write a SQL statement to Increase the selling price by 10% for all products in the 'Bakery' category in the products table.
+
+Products table
+
+---------------
+product_id
+product_name
+category
+cost_price
+sell_price
+reorder_lvl
+quantity
+supplier_id
 
 ```sql
--- Paste your SQL code below for Question 1
+
+UPDATE Products
+SET sell_price = sell_price * 1.10
+WHERE category = 'Bakery';
 ```
 
 **Output:**
 
-![Output1](output.png)
+<img width="1064" height="507" alt="image" src="https://github.com/user-attachments/assets/b28aba38-a01c-47f9-a9ab-d1be4674deb9" />
 
 **Question 2**
 ---
--- Paste Question 2 here
+Write a SQL statement to Update the address to '58 Lakeview, Magnolia' where supplier ID is 5 in the suppliers table.
 
+Suppliers Table 
+
+name               type
+-----------------  ---------------
+supplier_id        INT
+supplier_name      VARCHAR(100)
+contact_person     VARCHAR(100)
+phone_number       VARCHAR(20)
+email              VARCHAR(100)
+address            VARCHAR(250)
 ```sql
--- Paste your SQL code below for Question 2
+UPDATE Suppliers
+SET address = '58 Lakeview, Magnolia'
+WHERE supplier_id = 5;
 ```
 
 **Output:**
+<img width="1030" height="413" alt="image" src="https://github.com/user-attachments/assets/ae07a1f2-7c47-4362-8277-12f29c463cd6" />
 
-![Output2](output.png)
 
 **Question 3**
 ---
--- Paste Question 3 here
+ Update the total selling price to quantity sold multiplied by updated selling price per unit where product id is 10 in the sales table.
 
+SALES TABLE
+name               type
+-----------------  ---------------
+sale_id            INT
+sale_date          DATE
+product_id         INT
+quantity           INT
+sell_price         DECIMAL(10,2)
+total_sell_price   DECIMAL(10,2)
 ```sql
--- Paste your SQL code below for Question 3
+UPDATE SALES
+SET total_sell_price  =  quantity * sell_price 
+WHERE product_id = 10;
 ```
 
 **Output:**
 
-![Output3](output.png)
+<img width="1034" height="484" alt="image" src="https://github.com/user-attachments/assets/292b8d90-ef8e-4247-a70e-15e7e96000a8" />
 
 **Question 4**
 ---
--- Paste Question 4 here
+For  Increase the selling price per unit by 3 for all products supplied by supplier ID 4 in the sales table.
+
+PRODUCTS TABLE
+
+name               type
+-----------------  ---------------
+product_id         INT
+product_name       VARCHAR(100)
+category           VARCHAR(50)
+cost_price         DECIMAL(10,2)
+sell_price         DECIMAL(10,2)
+reorder_lvl        INT
+quantity           INT
+supplier_id        INT
+
+SALES TABLE
+name               type
+-----------------  ---------------
+sale_id            INT
+sale_date          DATE
+product_id         INT
+quantity           INT
+sell_price         DECIMAL(10,2)
+total_sell_price   DECIMAL(10,2)
 
 ```sql
--- Paste your SQL code below for Question 4
+update SALES
+set sell_price  = sell_price + 3
+WHERE product_id IN(
+    SELECT product_id
+    FROM PRODUCTS
+    WHERE supplier_id =4
+
+);
 ```
 
 **Output:**
 
-![Output4](output.png)
+<img width="1040" height="401" alt="image" src="https://github.com/user-attachments/assets/8b6583f5-4ef7-4851-91a9-51a8f49f4ca1" />
 
 **Question 5**
 ---
--- Paste Question 5 here
+Write a SQL statement to Increase quantity of all products by 10% to adjust for surplus stock counted
 
+Products table
+
+---------------
+product_id
+product_name
+category
+cost_price
+sell_price
+reorder_lvl
+quantity
+supplier_id
 ```sql
--- Paste your SQL code below for Question 5
+update Products
+set quantity = quantity * 1.10;
 ```
 
 **Output:**
 
-![Output5](output.png)
+<img width="1112" height="580" alt="image" src="https://github.com/user-attachments/assets/2781d02e-e32b-4c63-8a3a-f860ad2c2e0a" />
+
 
 **Question 6**
 ---
--- Paste Question 6 here
+Write a SQL query to delete a doctor from Doctors table whose Specialization is 'Pediatrics' and First name is 'Michael'.
 
+Sample table: Doctors
+
+attributes : doctor_id, first_name, last_name, specialization
 ```sql
--- Paste your SQL code below for Question 6
+delete from Doctors
+where  specialization ='Pediatrics' and first_name = 'Michael' ;
 ```
 
 **Output:**
 
-![Output6](output.png)
+<img width="949" height="407" alt="image" src="https://github.com/user-attachments/assets/f84b8221-a834-4c9e-a507-d305cf3ea0a3" />
+
 
 **Question 7**
 ---
--- Paste Question 7 here
+Write a SQL query to Delete customers from 'customer' table where 'GRADE' is less than 2.
 
+ 
+Sample table: Customer
+
++-----------+-------------+-------------+--------------+--------------+-------+-------------+-------------+-------------+---------------+--------------+------------+  
+|CUST_CODE  | CUST_NAME   | CUST_CITY   | WORKING_AREA | CUST_COUNTRY | GRADE | OPENING_AMT | RECEIVE_AMT | PAYMENT_AMT |OUTSTANDING_AMT| PHONE_NO     | AGENT_CODE |
++-----------+-------------+-------------+--------------+--------------+-------+-------------+-------------+-------------+---------------+--------------+------------+
+| C00013    | Holmes      | London      | London       | UK           |     2 |     6000.00 |     5000.00 |     7000.00 |       4000.00 | BBBBBBB      | A003       |
+| C00001    | Micheal     | New York    | New York     | USA          |     2 |     3000.00 |     5000.00 |     2000.00 |       6000.00 | CCCCCCC      | A008       |
+| C00020    | Albert      | New York    | New York     | USA          |     3 |     5000.00 |     7000.00 |     6000.00 |       6000.00 | BBBBSBB      | A008       |
 ```sql
--- Paste your SQL code below for Question 7
+DELETE FROM Customer 
+where GRADE < 2;
 ```
 
 **Output:**
 
-![Output7](output.png)
+<img width="872" height="500" alt="image" src="https://github.com/user-attachments/assets/fc082044-0b99-48ad-834d-18d7072e4fea" />
 
 **Question 8**
 ---
--- Paste Question 8 here
+Write a SQL query to Delete customers from 'customer' table where 'CUST_CITY' is not 'New York' and 'OUTSTANDING_AMT' is greater than 5000.
+
+Sample table: Customer
+
++-----------+-------------+-------------+--------------+--------------+-------+-------------+-------------+-------------+---------------+--------------+------------+  
+|CUST_CODE  | CUST_NAME   | CUST_CITY   | WORKING_AREA | CUST_COUNTRY | GRADE | OPENING_AMT | RECEIVE_AMT | PAYMENT_AMT |OUTSTANDING_AMT| PHONE_NO     | AGENT_CODE |
++-----------+-------------+-------------+--------------+--------------+-------+-------------+-------------+-------------+---------------+--------------+------------+
+| C00013    | Holmes      | London      | London       | UK           |     2 |     6000.00 |     5000.00 |     7000.00 |       4000.00 | BBBBBBB      | A003       |
+| C00001    | Micheal     | New York    | New York     | USA          |     2 |     3000.00 |     5000.00 |     2000.00 |       6000.00 | CCCCCCC      | A008       |
+| C00020    | Albert      | New York    | New York     | USA          |     3 |     5000.00 |     7000.00 |     6000.00 |       6000.00 | BBBBSBB      | A0
 
 ```sql
--- Paste your SQL code below for Question 8
+delete from Customer 
+where CUST_CITY is not 'New York' and OUTSTANDING_AMT > 5000;
 ```
 
 **Output:**
 
-![Output8](output.png)
+<img width="1011" height="563" alt="image" src="https://github.com/user-attachments/assets/a2d212fe-3b6e-43c8-9a7e-afa48ef58ede" />
+
 
 **Question 9**
 ---
--- Paste Question 9 here
+Write a SQL query to Delete a Specific Surgery which was made on 28th Feb 2024.
+
+Sample table: Surgeries
+
+attributes: surgery_id, patient_id, surgeon_id, surgery_date
 
 ```sql
--- Paste your SQL code below for Question 9
+delete from Surgeries 
+where surgery_date = '2024-02-28';
 ```
 
 **Output:**
 
-![Output9](output.png)
+<img width="1038" height="395" alt="image" src="https://github.com/user-attachments/assets/e7a3ffd7-c232-4ba5-b98a-4a6fd3488961" />
 
 **Question 10**
 ---
--- Paste Question 10 here
+Write a SQL query to Delete customers from 'customer' table where 'CUST_NAME' contains the substring 'Holmes'.
+
+Sample table: Customer
+
++-----------+-------------+-------------+--------------+--------------+-------+-------------+-------------+-------------+---------------+--------------+------------+  
+|CUST_CODE  | CUST_NAME   | CUST_CITY   | WORKING_AREA | CUST_COUNTRY | GRADE | OPENING_AMT | RECEIVE_AMT | PAYMENT_AMT |OUTSTANDING_AMT| PHONE_NO     | AGENT_CODE |
++-----------+-------------+-------------+--------------+--------------+-------+-------------+-------------+-------------+---------------+--------------+------------+
+| C00013    | Holmes      | London      | London       | UK           |     2 |     6000.00 |     5000.00 |     7000.00 |       4000.00 | BBBBBBB      | A003       |
+| C00001    | Micheal     | New York    | New York     | USA          |     2 |     3000.00 |     5000.00 |     2000.00 |       6000.00 | CCCCCCC      | A008       |
+| C00020    | Albert      | New York    | New York     | USA          |     3 |     5000.00 |     7000.00 |     6000.00 |       6000.00 | BBBBSBB      | A008       |
+
 
 ```sql
--- Paste your SQL code below for Question 10
+delete from customer
+where CUST_NAME like  '%Holmes%'; 
 ```
 
 **Output:**
+<img width="1099" height="528" alt="image" src="https://github.com/user-attachments/assets/ff2645a7-9a37-49f1-82da-c97b0bfab7c7" />
 
-![Output10](output.png)
 
 ## RESULT
 Thus, the SQL queries to implement DML commands have been executed successfully.
