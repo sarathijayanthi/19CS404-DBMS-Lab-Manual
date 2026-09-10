@@ -38,123 +38,206 @@ HAVING condition;
 
 **Question 1**
 --
--- Paste Question 1 here
+Write a SQL Query to find how many medications are prescribed for each patient?
 
+Sample table:MedicalRecords Table
 ```sql
--- Paste your SQL code below for Question 1
+select PatientID , count(Medications) as AvgMedications 
+from MedicalRecords 
+group by PatientID ;
 ```
 
 **Output:**
 
-![Output1](output.png)
+<img width="996" height="560" alt="image" src="https://github.com/user-attachments/assets/ce70fdc3-de1d-44a1-93f5-6ea8c6a5601b" />
+
 
 **Question 2**
 ---
--- Paste Question 2 here
+What is the count of male and female patients?
 
+Sample table: Patients Table
 ```sql
--- Paste your SQL code below for Question 2
+select Gender , count(*) as TotalPatients 
+from Patients
+group by Gender;
 ```
 
 **Output:**
 
-![Output2](output.png)
+<img width="999" height="363" alt="image" src="https://github.com/user-attachments/assets/7f1c7b9c-fb0d-4390-b101-3e8f3519daff" />
+
 
 **Question 3**
 ---
--- Paste Question 3 here
+How many medical records are there for each patient?
+
+Sample table:MedicalRecords Table
+
 
 ```sql
--- Paste your SQL code below for Question 3
+select PatientID, count(*) as  TotalRecords 
+from MedicalRecords
+group by PatientID;
 ```
 
 **Output:**
 
-![Output3](output.png)
+<img width="881" height="588" alt="image" src="https://github.com/user-attachments/assets/182a27ff-ce4b-459e-bf87-6fe541554bd3" />
+
 
 **Question 4**
 ---
--- Paste Question 4 here
+Write a SQL query to find the average length of email addresses (in characters):
+
+Table: customer
+
+name        type
+----------  ----------
+id          INTEGER
+name        TEXT
+city        TEXT
+email       TEXT
+phone       INTEGER
 
 ```sql
--- Paste your SQL code below for Question 4
+select avg(length(email)) as avg_email_length 
+from customer;
+
 ```
 
 **Output:**
 
-![Output4](output.png)
+<img width="772" height="330" alt="image" src="https://github.com/user-attachments/assets/1d151918-356b-4dc6-a1f2-b907040e6d83" />
+
 
 **Question 5**
 ---
--- Paste Question 5 here
+Write a SQL query to find the total amount of fruits with a unit type of 'LB'.
+
+Note: Inventory attribute contains amount of fruits
+
+Table: fruits
+
+name        type
+----------  ----------
+id          INTEGER
+name        TEXT
+unit        TEXT
+inventory   INTEGER
+price       REAL
 
 ```sql
--- Paste your SQL code below for Question 5
+select sum(inventory) as total
+from fruits
+where unit = 'LB';
 ```
 
 **Output:**
 
-![Output5](output.png)
+<img width="931" height="369" alt="image" src="https://github.com/user-attachments/assets/8a8916c3-c0e8-4210-b8f5-1edd8976d67b" />
 
 **Question 6**
 ---
--- Paste Question 6 here
+Write a SQL query to Calculate the average income of the employees with names starting with 'A': 
+
+Table: employee
+
+name        type
+----------  ----------
+id          INTEGER
+name        TEXT
+age         INTEGER
+city        TEXT
+income      INTEGER
 
 ```sql
--- Paste your SQL code below for Question 6
+select avg(income) as avg_income 
+from employee
+where name like 'A%';
 ```
 
 **Output:**
 
-![Output6](output.png)
+<img width="848" height="333" alt="image" src="https://github.com/user-attachments/assets/1376ec9b-e0d2-41f7-99a2-bdc97c26c499" />
+
 
 **Question 7**
 ---
--- Paste Question 7 here
+Write a SQL query to find the youngest employee in the company?
 
+Table: employee
+
+name        type
+----------  ----------
+id          INTEGER
+name        TEXT
+age         INTEGER
+city        TEXT
+income      INTEGER
 ```sql
--- Paste your SQL code below for Question 7
+select name as Employee_Name , age as Age
+from employee
+order by age asc limit 1;
 ```
 
 **Output:**
 
-![Output7](output.png)
+<img width="948" height="331" alt="image" src="https://github.com/user-attachments/assets/8684a354-dff2-44f8-b4a3-2071c4934318" />
+
 
 **Question 8**
 ---
--- Paste Question 8 here
+Write the SQL query that accomplishes the grouping of data by age intervals using the expression (age/5)5, calculates the minimum age for each group, and excludes groups where the minimum age is not less than 25.
+
+Sample table: customer1
 
 ```sql
--- Paste your SQL code below for Question 8
+select (age/5)*5 as age_group , MIN(age)
+from customer1
+group by  (age/5) *5 
+having MIN(age) <25;
 ```
 
 **Output:**
 
-![Output8](output.png)
+<img width="938" height="330" alt="image" src="https://github.com/user-attachments/assets/88fed5aa-191f-4df2-a0a7-19775eb92cea" />
+
 
 **Question 9**
 ---
--- Paste Question 9 here
+Write the SQL query that accomplishes the grouping of data by age, calculates the total income for each age group, and includes only those age groups where the total income sum is greater than 1,000,000.
+
+Sample table: employee
 
 ```sql
--- Paste your SQL code below for Question 9
+select age , SUM(income)
+from employee
+group by age
+having sum(income) > 1000000;
 ```
 
 **Output:**
 
-![Output9](output.png)
+<img width="951" height="434" alt="image" src="https://github.com/user-attachments/assets/7b9a8973-6ade-4e89-86e9-54555498a61a" />
 
 **Question 10**
 ---
--- Paste Question 10 here
+Write the SQL query that accomplishes the selection of total number of products for each category from the "products" table, and includes only those products where the minimum category ID is less than 3.
+
+Sample table: products
 
 ```sql
--- Paste your SQL code below for Question 10
+select category_id, count(product_name)
+from products
+group by category_id 
+having category_id < 3;
 ```
 
 **Output:**
+<img width="945" height="359" alt="image" src="https://github.com/user-attachments/assets/ee772be5-e3ed-4b4e-87fd-417f98a24051" />
 
-![Output10](output.png)
+
 
 
 ## RESULT
